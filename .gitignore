@@ -1,4 +1,4 @@
-/dist
+/dist/bundle.js
 /node_modules
 /package-lock-old.json
 /package-old.json
