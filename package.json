@@ -1,0 +1,37 @@
+{
+  "name": "gama-accenture",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm dist/bundle.js",
+    "build-dev": "webpack --mode=development",
+    "build-prod": "webpack --mode=production",
+    "server": "live-server src --verbose",
+    "server-prod": "live-server dist --verbose",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/polyfill": "^7.12.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "browser-sync": "^2.26.0",
+    "css-loader": "^5.0.1",
+    "html-loader": "^1.3.2",
+    "rollup": "^0.66.4",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.18.0",
+    "webpack-cli": "^4.4.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.1.2",
+    "services": "0.0.3"
+  }
+}
