@@ -1,6 +1,7 @@
 import baseURL from "../../service/baseURL.js";
 import Auth from '../../service/Auth.js';
-import Utils from '../../service/Utils.js'
+import Utils from '../../service/Utils.js';
+import loginImg from '../../img/login.png';
 
 let Login = {
   render: async () => {
@@ -9,7 +10,7 @@ let Login = {
       <div class="row mt-5 mb-5">
 
         <div class="col-md-6 m-auto d-flex pb-3">
-          <img src="img/login.png" class="img-fluid m-auto" width="80%" alt="Imagem resposiva">
+          <img src=${loginImg} class="img-fluid m-auto" width="80%" alt="Imagem resposiva">
         </div>
 
         <div class="col-md-6 m-auto">
@@ -77,10 +78,8 @@ let Login = {
         let password = document.querySelector('#inputSenha');
 
         let loginUser = {
-          // usuario: email.value,
-          usuario: 'dmorais',
-          // senha: password.value,
-          senha: '123456',
+          usuario: email.value,
+          senha: password.value,
         };
 
         axios.post(`${baseURL}/login`, loginUser).then( res => {
@@ -95,6 +94,21 @@ let Login = {
             // trocar por modal
             alert('Usuário ou senha inválidos')
           }
+        }).catch( function (err) {
+
+          let res = err.response;
+          let message = res.data.error;
+
+          console.log('Erro: ', err);
+          console.log('Response: ', res);
+          console.log('Response.data: ', res.data);
+
+          alert(`
+                  Não foi possível realizar o login:
+                  -> ${message}
+
+                  Verifique os dados e tente novamente.`);
+
         });
       }
     });

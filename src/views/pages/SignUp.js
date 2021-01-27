@@ -1,5 +1,7 @@
 import baseURL from "../../service/baseURL.js";
-import Utils from '../../service/Utils.js'
+import Utils from '../../service/Utils.js';
+import signupImg from '../../img/signup.png';
+import Auth from '../../service/Auth.js';
 
 let SignUp = {
   render: async () => {
@@ -10,7 +12,7 @@ let SignUp = {
           <div class="text-center mb-3">
             <h2>Junte-se a nós!</h2>
           </div>
-          <img src="img/signup.png" class="img-fluid m-auto" width="80%" alt="Imagem resposiva">
+          <img src=${signupImg} class="img-fluid m-auto" width="80%" alt="Imagem resposiva">
         </div>
 
         <div class="col-md-6 m-auto">
@@ -148,39 +150,25 @@ let SignUp = {
 
           axios.post(`${baseURL}/usuarios`, newUser).then( res => {
 
-            localStorage.setItem('@token', res.data.token);
-            sessionStorage.setItem('@token', res.data.token);
-            Cookies.set('@token', res.data.token, {
-              expires: 1
-            });
+            const { token, usuario } = res.data;
+            Auth.storeSession(token, usuario);
+
+          }).catch( function(err) {
+
+            let res = err.response;
+            let message = res.data.error;
+
+            console.log('Erro: ', err);
+            console.log('Response: ', res);
+            console.log('Response.data: ', res.data);
+
+            alert(`
+                    Não foi possível realizar o login:
+                    -> ${message}
+
+                    Verifique os dados e tente novamente.`);
 
           });
-
-        // axios.post(loginURL,{
-        //     usuario: userLogin,
-        //     senha: passwordVal
-        // }).then( res => {
-        //     if (res.status == 200 ){
-        //         window.location.replace('#/dashboard')
-        //         localStorage.setItem('@token', res.data.token)
-        //         localStorage.setItem('userDataAccount', JSON.stringify(res.data))
-        //     }
-
-
-        // }).catch( function(err){
-        //     let res = err.response
-        //     let message = res.data.error
-        //     console.log('Erro: ', err)
-        //     console.log('Response: ', res)
-        //     console.log('Response.data: ', res.data)
-        //     alert(`
-        //             Não foi possível realizar o login:
-        //             -> ${message}
-
-        //             Verifique os dados e tente novamente.`)
-        // })
-
-
 
       }
     });

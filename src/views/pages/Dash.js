@@ -1,5 +1,6 @@
 import Auth from '../../service/Auth.js';
 import baseURL from '../../service/baseURL.js';
+import cardImg from '../../img/bootstrap-icons.png';
 
 let requestDashboard = () => {
   let { login } = JSON.parse(localStorage.getItem('@usuario'));
@@ -34,13 +35,14 @@ let Dash = {
     let view = `
       <div class="row mb-2">
         <div class="col">
-          <h2>Olá, ${nome}. Bem-vindo de volta!</h2>
+          <h2>Olá, ${nome}.</h2>
+          <h2>Bem-vindo de volta!</h2>
         </div>
       </div>
       <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
           <div class="card">
-            <img src="img/bootstrap-icons.png" class="card-img-top" alt="...">
+            <img src=${cardImg} class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">${dataDash[0].descricao}</h5>
               <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -49,7 +51,7 @@ let Dash = {
         </div>
         <div class="col">
           <div class="card">
-            <img src="img/bootstrap-icons.png" class="card-img-top" alt="...">
+            <img src=${cardImg} class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">${dataDash[1].descricao}</h5>
               <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -58,7 +60,7 @@ let Dash = {
         </div>
         <div class="col">
           <div class="card">
-            <img src="img/bootstrap-icons.png" class="card-img-top" alt="...">
+            <img src=${cardImg} class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>

@@ -1,3 +1,5 @@
+import homeImg from '../../img/home.png'
+
 let Home = {
   render: async () => {
     let view = `
@@ -8,7 +10,7 @@ let Home = {
         </div>
 
         <div class="col-md-6 m-auto text-center">
-          <img src="../../img/home.png" class="img-fluid m-auto" width="80%" alt="Imagem resposiva">
+          <img src=${homeImg} class="img-fluid m-auto" width="80%" alt="Imagem resposiva">
         </div>
 
       </div>
