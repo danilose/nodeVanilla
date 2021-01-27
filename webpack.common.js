@@ -1,12 +1,12 @@
 const webpack = require('webpack');
 const path = require('path');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-// const pathToSrc = require.resolve("./src/");
 const pathToMainJs = require.resolve("./src/app.js");
 const pathToIndexCss = require.resolve("./src/css/style.css");
 const pathToIndexHtml = require.resolve("./src/index.html");
+const pathToIndexFavicon16 = require.resolve("./src/img/favicon-16x16.png");
+const pathToIndexFavicon32 = require.resolve("./src/img/favicon-32x32.png");
 
 module.exports =  {
   entry: [
@@ -14,13 +14,11 @@ module.exports =  {
     pathToMainJs,
     pathToIndexHtml,
     pathToIndexCss,
+    pathToIndexFavicon16,
+    pathToIndexFavicon32,
   ],
   plugins: [
     new CleanWebpackPlugin(),
-    // new HtmlWebpackPlugin({
-    //   filename: 'index.html',
-    //   template: pathToIndexHtml,
-    // }),
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
